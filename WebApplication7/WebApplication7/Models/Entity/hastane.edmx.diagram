@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6e1171e6c0c4f8488fd272ef1c62a1e" Name="Diagram1">
+        <EntityTypeShape EntityType="hastaneModel.Adresler" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Birimler" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Doktorlar" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Fiyat" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Iletisim" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.Randevular" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hastaneModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="hastaneModel.FK__Adresler__kullan__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK__Doktorlar__birim__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK__Fiyat__birim_id__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK__Randevula__dokto__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK__Iletisim__kullan__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="hastaneModel.FK__Randevula__kulla__2B3F6F97" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

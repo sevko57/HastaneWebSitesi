@@ -1,0 +1,74 @@
+﻿@using WebApplication7.Models.ViewModel
+@model RandevuViewModel
+@{
+    ViewBag.Title = "Randevu";
+}
+
+<center><h2 style="color:darkblue;">Randevu Al</h2></center>
+<br />
+<div class="container mt-3">
+    <form method="post">
+        <center>
+            <div class="mb-3 mt-3">
+                <label for="text" style="color:darkblue; font:16px">TC KİMLİK NO:</label>
+                @Html.TextBoxFor(m => m.Randevular.Kullanicilar.tc_no, new { @class = "form-control form-control-lg", placeholder = "T.C. Kimlik Numaranızı Giriniz", maxlength = "11", required = true })
+            </div>
+        </center>
+        
+        <center>
+            <label for="sel1" style="color:darkblue; font:16px" class="form-label">POLİKLİNİK SEÇİMİ:</label>
+            @Html.DropDownList("klinik_id",Model.Birimlers)
+        </center>
+        <center>
+            <label for="sel1" style="color:darkblue; font:16px" class="form-label">DOKTOR SEÇİMİ:</label>
+            @Html.DropDownListFor(x => x.Randevular.doktor_id, new List<SelectListItem>(),new { id="doktorlar"})
+        </center>
+        <center>
+            <label for="tarih" style="color:darkblue; font:16px">Randevu Gün</label>
+            @Html.TextBoxFor(x=>x.Randevular.Randevu_saat,"{0:yyyy-MM-ddTHH:mm:ss}",new { 
+                    @class="form-control",
+                    @type="datetime-local"
+                })
+        </center>
+        <br />
+        <center>
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                Randevu Al
+            </button>
+        </center>
+    </form>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">BİLGİLENDİRME MESAJI</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                Randevu Alındı...
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#klinik_id").change(function (e) {
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetDoktorlar?klinikId=" + $(this).val(),
+                dataType: "json",
+                success: function (response) {
+                    $("#doktorlar option").remove();
+                    $.each(response.data, function (indexInArray, valueOfElement) {
+                        let option = new Option(valueOfElement.doktor_adi + " " + valueOfElement.doktor_soyadi, valueOfElement.doktor_id);
+                        $("#doktorlar").append(option);
+                    });
+                }
+            });
+        });
+    });
+</script>
+

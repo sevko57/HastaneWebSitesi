@@ -1,0 +1,39 @@
+﻿@using WebApplication7.Models.ViewModel
+@model BirimlerViewModel
+@{
+    ViewBag.Title = "Birimler";
+}
+<center><h2 style="color:darkblue;">Birimler</h2></center>
+<br />
+
+<form  method="get">
+    @Html.DropDownList("birim_id",Model.Birimlers,new { @class="form-control"})
+    <input type="submit" name="gonder" value="GÖNDER" class="btn btn-primary" />
+</form>
+@if (Model.Doktorlars!=null&&Model.Doktorlars.Count>0)
+{
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Doktor Adı</th>
+                <th>Doktor Soyadı</th>
+                <th>Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Doktorlars)
+            {
+                <tr>
+                    <td>@item.doktor_adi</td>
+                    <td>@item.doktor_soyadi</td>
+                    <td>
+                        @foreach (var fiyatItem in Model.Fiyats)
+                        {
+                            <span>@fiyatItem</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Galeri";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <style>
+    .lightbox-gallery {
+    
+    background-repeat: no-repeat;
+    overflow-x: hidden
+    }
+
+    .lightbox-gallery p {
+  
+    }
+
+    .lightbox-gallery h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    
+    }
+
+    media (max-width:767px) {
+    lightbox-gallery h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px
+    }
+    }
+        .lightbox-gallery .intro {
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 40px
+        }
+
+            .lightbox-gallery .intro p {
+                margin-bottom: 0
+            }
+
+        .lightbox-gallery .photos {
+            padding-bottom: 20px
+        }
+
+        .lightbox-gallery .item {
+            padding-bottom: 30px
+        }
+    </style>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <div class="lightbox-gallery">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="color:darkblue"> Galeri</h2>
+                
+            </div>
+            <div class="row photos">
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 1.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 1.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 2.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 2.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 3.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 3.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 4.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 4.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 5.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 5.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 6.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 6.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/Galeri 7.png" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/Galeri 7.png"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="~/assets/image/dogum.jpg" data-lightbox="photos"><img class="img-fluid" src="~/assets/image/dogum.jpg"></a></div>
+              
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
+
+
+
+

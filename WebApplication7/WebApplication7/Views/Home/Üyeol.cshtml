@@ -1,0 +1,80 @@
+﻿@model WebApplication7.Models.Entity.Kullanicilar
+@using WebApplication7.Models.Entity
+@{
+    ViewBag.Title = "Üyeol";
+}
+
+<center><h2 style="color:darkblue;">Üye Ol</h2></center>
+<br />
+    <div class="container mt-3">
+
+        <form method="post">
+            <center>
+                <div class="mb-3 mt-3">
+                    <label for="text" style="color:darkblue; font:16px">TC KİMLİK NO:</label>
+                    @Html.TextBoxFor(m=>m.tc_no,new {@class="form-control" ,style="width:400px;", maxlength = "11",  placeholder="TC NO GİRİNİZ:",required=true })
+                </div>
+            </center>
+            <center>
+                <div class="mb-3 mt-3">
+                    <label for="text" style="color:darkblue; font:16px">ADINIZ:</label>
+                    @Html.TextBoxFor(m => m.adi, new { @class = "form-control", style = "width:400px;", placeholder = "ADINIZ:", required = true })
+                </div>
+            </center>
+            <center>
+                <div class="mb-3 mt-3">
+                    <label for="text" style="color:darkblue; font:16px">SOYADINIZ:</label>
+                    @Html.TextBoxFor(m => m.soyadi, new { @class = "form-control", style = "width:400px;", placeholder = "SOYADINIZ:", required = true })
+                </div>
+            </center>
+            <center>
+                <div class="mb-3 mt-3">
+                    <label for="text" style="color:darkblue; font:16px">TELEFON NUMARASI:</label>
+                    @Html.TextBoxFor(m => m.telefon_no, new { @class = "form-control", style = "width:400px;", maxlength = "11", placeholder = "TELEFON NUMARASI:", required = true })
+                </div>
+            </center>
+            <center>
+                <div class="mb-3 mt-3">
+                    <label for="email" style="color:darkblue; font:16px">MAİL</label>
+                    @Html.TextBoxFor(m => m.mail    , new { @class = "form-control", style = "width:400px;", placeholder = "MAİL ADRESİNİZ:" })
+                </div>
+            </center>
+            <center>
+                <div class="mb-3">
+                    <label for="pwd" style="color:darkblue; font:16px">ŞİFRE</label>
+                    @Html.PasswordFor(m=>m.sifre,new {@class="form-control",style="width:400px;",placeholder="ŞİFRENİZİ GİRİNİZ", required = true })
+                </div>
+            </center>
+
+            <center>
+                @*<input type="submit" name="gonder" value="Üye Ol" class="btn" style="background-color:darkblue;" />*@
+                <button type="submit" class="btn" style="background-color:darkblue; color:white" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Üye Ol
+                </button>
+            </center>
+            
+        </form>
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color:darkblue">Bilgi Mesajı</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+
+                <div class="modal-body">
+                   Kayıt Başarılı
+                </div>
+
+
+                <div class="modal-footer">
+                    <a href="/Home/Girişyap" type="button" class="btn btn-primary btn-lg">Tamam</a>
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hastaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adresler">
+    <Key>
+      <PropertyRef Name="adres_id" />
+    </Key>
+    <Property Name="adres_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="il" Type="varchar" MaxLength="50" />
+    <Property Name="ilce" Type="varchar" MaxLength="50" />
+    <Property Name="adres_detay" Type="varchar(max)" />
+    <Property Name="kullanici_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Birimler">
+    <Key>
+      <PropertyRef Name="birim_id" />
+    </Key>
+    <Property Name="birim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birim_adi" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Doktorlar">
+    <Key>
+      <PropertyRef Name="doktor_id" />
+    </Key>
+    <Property Name="doktor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="doktor_adi" Type="varchar" MaxLength="50" />
+    <Property Name="doktor_soyadi" Type="varchar" MaxLength="50" />
+    <Property Name="birim_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Fiyat">
+    <Key>
+      <PropertyRef Name="fiyat_id" />
+    </Key>
+    <Property Name="fiyat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fiyat" Type="int" />
+    <Property Name="birim_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Iletisim">
+    <Key>
+      <PropertyRef Name="iletisim_id" />
+    </Key>
+    <Property Name="iletisim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullanici_id" Type="int" />
+    <Property Name="konu" Type="varchar" MaxLength="50" />
+    <Property Name="mesaj" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="kullanici_id" />
+    </Key>
+    <Property Name="kullanici_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tc_no" Type="char" MaxLength="11" />
+    <Property Name="adi" Type="varchar" MaxLength="50" />
+    <Property Name="soyadi" Type="varchar" MaxLength="50" />
+    <Property Name="telefon_no" Type="char" MaxLength="11" />
+    <Property Name="mail" Type="varchar" MaxLength="50" />
+    <Property Name="sifre" Type="int" />
+  </EntityType>
+  <EntityType Name="Randevular">
+    <Key>
+      <PropertyRef Name="Randevu_id" />
+    </Key>
+    <Property Name="Randevu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullanici_id" Type="int" />
+    <Property Name="doktor_id" Type="int" />
+    <Property Name="Randevu_saat" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Adresler__kullan__412EB0B6">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Adresler" Type="Self.Adresler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullanici_id" />
+      </Principal>
+      <Dependent Role="Adresler">
+        <PropertyRef Name="kullanici_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Doktorlar__birim__286302EC">
+    <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+    <End Role="Doktorlar" Type="Self.Doktorlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birimler">
+        <PropertyRef Name="birim_id" />
+      </Principal>
+      <Dependent Role="Doktorlar">
+        <PropertyRef Name="birim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fiyat__birim_id__33D4B598">
+    <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+    <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birimler">
+        <PropertyRef Name="birim_id" />
+      </Principal>
+      <Dependent Role="Fiyat">
+        <PropertyRef Name="birim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Iletisim__kullan__2F10007B">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Iletisim" Type="Self.Iletisim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullanici_id" />
+      </Principal>
+      <Dependent Role="Iletisim">
+        <PropertyRef Name="kullanici_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Randevula__dokto__2C3393D0">
+    <End Role="Doktorlar" Type="Self.Doktorlar" Multiplicity="0..1" />
+    <End Role="Randevular" Type="Self.Randevular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doktorlar">
+        <PropertyRef Name="doktor_id" />
+      </Principal>
+      <Dependent Role="Randevular">
+        <PropertyRef Name="doktor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Randevula__kulla__2B3F6F97">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Randevular" Type="Self.Randevular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullanici_id" />
+      </Principal>
+      <Dependent Role="Randevular">
+        <PropertyRef Name="kullanici_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hastaneModelStoreContainer">
+    <EntitySet Name="Adresler" EntityType="Self.Adresler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doktorlar" EntityType="Self.Doktorlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fiyat" EntityType="Self.Fiyat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Iletisim" EntityType="Self.Iletisim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Randevular" EntityType="Self.Randevular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Adresler__kullan__412EB0B6" Association="Self.FK__Adresler__kullan__412EB0B6">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Adresler" EntitySet="Adresler" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Doktorlar__birim__286302EC" Association="Self.FK__Doktorlar__birim__286302EC">
+      <End Role="Birimler" EntitySet="Birimler" />
+      <End Role="Doktorlar" EntitySet="Doktorlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fiyat__birim_id__33D4B598" Association="Self.FK__Fiyat__birim_id__33D4B598">
+      <End Role="Birimler" EntitySet="Birimler" />
+      <End Role="Fiyat" EntitySet="Fiyat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Iletisim__kullan__2F10007B" Association="Self.FK__Iletisim__kullan__2F10007B">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Iletisim" EntitySet="Iletisim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Randevula__dokto__2C3393D0" Association="Self.FK__Randevula__dokto__2C3393D0">
+      <End Role="Doktorlar" EntitySet="Doktorlar" />
+      <End Role="Randevular" EntitySet="Randevular" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Randevula__kulla__2B3F6F97" Association="Self.FK__Randevula__kulla__2B3F6F97">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Randevular" EntitySet="Randevular" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

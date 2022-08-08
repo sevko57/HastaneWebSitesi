@@ -1,0 +1,39 @@
+﻿@model WebApplication7.Models.Entity.Kullanicilar
+@using WebApplication7.Models.Entity
+@{
+    ViewBag.Title = "Girişyap";
+}
+
+<center><h2 style="color:darkblue;">Giriş yap</h2></center>
+<br />
+
+<div class="container mt-3">
+
+    <form method="post">
+        <center>
+            <div class="mb-3 mt-3">
+                <label for="text" style="color:darkblue; font:16px">TC KİMLİK NO:</label>
+                <input type="text" class="form-control" name="tc_no" style="width:400px;" maxlength="11" placeholder="TC NO GİRİNİZ:" required>
+            </div>
+        </center>
+        <center>
+            <div class="mb-3">
+                <label for="pwd" style="color:darkblue; font:16px">ŞİFRE</label>
+                <input type="password" name="sifre" class="form-control" style="width:400px;" placeholder="ŞİFRENİZİ GİRİNİZ:" required>
+            </div>
+        </center>
+
+        <center>
+            <button type="submit" class="btn" style="background-color:darkblue; color:white">
+                Giriş Yap
+            </button>
+        </center>
+        <br />
+        <center>
+            <p style="color:darkblue; font:16px">Üye Değilseniz:</p>
+            <a href="/Home/Üyeol">Üye Ol</a>
+        </center>
+    </form>
+</div>
+
+

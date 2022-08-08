@@ -1,0 +1,56 @@
+﻿@model WebApplication7.Models.Entity.Iletisim
+    @using WebApplication7.Models.Entity
+@{
+    ViewBag.Title = "Görüşler";
+}
+
+
+    <center>
+
+            <h2 style="color:darkblue">GÖRÜŞLERİNİZİ ÖNEMSİYORUZ</h2>
+            <hr style="color:darkblue" width="400" />
+    </center>
+    <div class="container mt-3">
+        
+        <form method="post">
+            <div class="mb-3 mt-3">
+                <label for="AD">Kimlik Numaranızı Giriniz</label>
+                @Html.TextBoxFor(m => m.Kullanicilar.tc_no, new { @class = "form-control form-control-lg", placeholder = "T.C. Kimlik Numaranızı Giriniz", maxlength = "11", required = true })
+            </div>
+            <label for="sel1" class="form-label">KONUYU ŞEÇİNİZ</label>
+            @Html.DropDownListFor(m => m.konu, new List<SelectListItem> {
+                                      new SelectListItem { Text="İstek",Value="istek"},
+                                      new SelectListItem { Text="Öneri",Value="öneri"},
+                                      new SelectListItem { Text="Şikayet",Value="şikayet"},
+                                      }, "Bir Seçim Yapın",
+                                      new { @class = "form-select" }
+                                      )
+            <div class="mb-3 mt-3">
+                <label for="comment">MESAJINIZ:</label>
+                @Html.TextAreaFor(m => m.mesaj, new {@class="form-control",rows="5",placeholder="Mesajınızı Giriniz"})
+            </div>
+
+
+            <div class="container mt-3">
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
+                    <label class="form-check-label" for="check1">Kişisel Verilerin Korunması Kanunu uyarınca ilgili Bilgilendirme’yi okudum. Kişisel verilerimin belirtilen kapsamda işlenmesini <br /> ve sağlık hizmet sunumu amacıyla tarafımla iletişime geçilmesini kabul ediyorum.</label>
+                </div>
+                <br />
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">
+                    <label class="form-check-label" for="check2"> Elektronik Ticaretin Düzenlenmesi Hakkında Kanun uyarınca ilgili Bilgilendirme’yi okudum.</label>
+                </div>
+                <br />
+
+                <center>
+                    <div id="liveAlertPlaceholder"></div>
+                    <button type="submit" class="btn btn-primary" >
+                        GÖNDER
+                    </button>
+                </center>
+            </div>
+        </form>
+            </div>
+
